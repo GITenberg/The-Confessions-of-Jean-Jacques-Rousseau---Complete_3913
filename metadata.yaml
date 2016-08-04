@@ -1,0 +1,41 @@
+_repo: The-Confessions-of-Jean-Jacques-Rousseau---Complete_3913
+_version: 0.0.1
+covers:
+- cover_type: archival
+  image_path: 3913/3913-h/images/cover.jpg
+  rights: Public domain in the USA.
+  rights_url: http://creativecommons.org/about/pdm
+creator:
+  author:
+    agent_name: Rousseau, Jean-Jacques
+    aliases:
+    - Rousseau, Jean Jacques
+    - Rousseau, J. J. (Jean-Jacques)
+    birthdate: 1712
+    deathdate: 1778
+    gutenberg_agent_id: '1286'
+    url: http://www.gutenberg.org/2009/agents/1286
+    wikipedia: http://en.wikipedia.org/wiki/Jean-Jacques_Rousseau
+description: When it was first published in 1781, The Confessions scandalised Europe
+  with its emotional honesty and frank treatment of the author's sexual and intellectual
+  development. Since then, it has had a more profound impact on European thought.
+  Rousseau left posterity a model of the reflective life - the solitary, uncompromising
+  individual, the enemy of servitude and habit and the selfish egoist who dedicates
+  his life to a particular ideal. The Confessions recreates the world in which he
+  progressed from incompetent engraver to grand success; his enthusiasm for experience,
+  his love of nat.
+gutenberg_issued: '2004-08-15'
+gutenberg_type: Text
+identifiers:
+  gutenberg: '3913'
+language: en
+publisher: Project Gutenberg
+rights: Public domain in the USA.
+rights_url: http://creativecommons.org/about/pdm
+subjects:
+- !lcsh 'Authors, French -- 18th century -- Biography'
+- !lcc 'PQ'
+- !lcsh 'Rousseau, Jean-Jacques, 1712-1778'
+- GITenberg
+title: The Confessions of Jean Jacques Rousseau — Complete
+url: http://www.gutenberg.org/ebooks/3913
