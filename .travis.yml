@@ -1,0 +1,61 @@
+sudo: required
+dist: trusty
+language: ruby
+
+before_install:
+before_install:
+- gem install asciidoctor -v 1.5.2
+- gem install tilt
+- sudo pip install git+https://github.com/gitenberg-dev/gitberg
+- sudo pip install pillow
+- sudo pip install cssutils
+- sudo pip install docutils
+- sudo pip install roman
+- sudo pip install git+https://github.com/gitenberg-dev/pg-epubmaker
+script:
+- VERSION=`ruby -e "require 'yaml'; meta = YAML.load_file('metadata.yaml'); puts meta['_version'];"`
+- git clone https://github.com/gitenberg-dev/asciidoctor-htmlbook.git
+- sudo pip install -r asciidoctor-htmlbook/gitberg-machine/requirements.txt
+
+- /usr/bin/python -c "from gitenberg import travis; travis.build_epub()"
+- ebook-convert book.epub book.mobi
+- xvfb-run ebook-convert book.epub book.pdf
+branches:
+  only:
+  - master
+notifications:
+  webhooks:
+    urls:
+      - https://unglue.it/api/travisci/webhook
+    on_success: always
+    on_failure: never
+    on_start: never
+deploy:
+  skip_cleanup: true
+  provider: releases
+  api_key:
+    secure: CmUGnIlp9Ri4j2hULqAlShfkrdhJqcgsEIKyx/AccXZxBZmbfIRbUmn5ZiKJBNdgXYJ49Vmo/EHw6PK3hHhNiBhCi64Z2RR7aX5dymvjBmqmS/MDhg3jiBhT5QrndqKS/j1j2Zg+QDbiE3Qsf+U4slnfQCETUrm+hOVj24tDBLewI7YfcsQKLbzcLAMJL7Jn6jSK5q4mFWUFLdYdMZljgVK7zCrTfPAPNAeRvBUeGX7KV+ckhyzOotFatSrl1YkIArpetl0hevk1QQVTXhpho8jtgLa7R8d3pAkCGX/TAcsqbdlFPTkC/uMSb6CeQLKvveaLBL7kwBD+9iixrVM1F9J78EP3VK1U46P/ZdHVaWxvx1/Xi5yrfEJPpe5+l7TZgZK7t87k7mvP5n+rbe95thB1ikkDAVPGjN6QpTM47wOIOOXI/ZQgx6+Pt1dyhpJaUtCNLnDiXGsfYItlYb1+ZdgaxEEfhUuz+x/hILJX4tSmsCwZYKcLiM/fOiSx+4pfrGEXreWSZRDkccXVn7Zf3BCCwKwgbSiClHs25QSQFg8MPgnuPn07bPXQ+2mr/BByXHVEWcsCiZVXUPsGGIxdUR0eb4RbdEzYIkLxv6N/WYqNCkDZDZCyUzyb9Eqxi9i+QgPeLl+3CmbXdy4G+tmpYkvVH6wDNA9Gd2XobnANzks=
+  file:
+    - book.epub
+    - book.mobi
+    - book.pdf
+  "on":
+    repo: GITenberg/The-Confessions-of-Jean-Jacques-Rousseau---Complete_3913
+addons:
+  apt:
+    packages:
+    - xsltproc
+    - xvfb
+    - calibre
+    - python-pip
+    - git
+    - python-dev
+    - libjpeg-dev
+    - libpng-dev
+    - libfreetype6
+    - libfreetype6-dev
+    - zlib1g-dev
+    - python-lxml
+    - libxml2-dev
+    - libxslt1-dev
+    - tidy
